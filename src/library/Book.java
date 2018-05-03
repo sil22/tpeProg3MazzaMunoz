@@ -1,5 +1,5 @@
- 
-public class Book {
+package library;
+ public class Book {
 	int id;
 	String titulo = "";
 	String autor = "";

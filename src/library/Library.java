@@ -1,9 +1,10 @@
+package library;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Library {
 	ListaArreglo books;
-	HashMap<String, ArrayList<Integer>> indicePorGenero;
+	BinaryTree indicePorGenero;
 	int idBook;
 	
 	public Library(){
@@ -28,7 +29,7 @@ public class Library {
 //	
 	private void addLinkToBook(String[] generos, Integer idBook){
 		for (String genero : generos) {
-			indicePorGenero.get(genero).add(idBook);
+//			indicePorGenero.get(genero).add(idBook);
 		}
 	}
 	
