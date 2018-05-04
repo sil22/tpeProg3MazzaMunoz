@@ -35,7 +35,7 @@ public class ListaArreglo {
 			}
 			arr = nuevoArreglo;
 		}
-		for (int i = 0; i < size; i++) {
+		for (int i = 0; i < size+1; i++) {
 			if(arr[i] == null){
 				arr[i] = o;
 			}
@@ -168,12 +168,12 @@ public class ListaArreglo {
 		return binarySearch(inicio, fin, medio, o);
 	}
 
-	public void print(){
-
-		for (int i = 0; i != size; i++) {
-			System.out.println(arr[i] + " ");
+	public String  toString(){
+		String result = "";
+		for (int i = 0; i < size; i++) {
+			result+=(arr[i] + "\n");
 		}
-		System.out.println();
+		return result;
 	}
 
 	public void deleteAll(){

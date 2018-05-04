@@ -1,56 +1,59 @@
 package library;
  public class Book {
 	int id;
-	String titulo = "";
-	String autor = "";
-	String cantPaginas;
-	String [] generos;
+	static int count = -1;
+	String title = "";
+	String author = "";
+	String pages;
+	String genders;
 
-	public Book(int id, String t, String a, String cp, String[] g){
-		this.id = id;
-		titulo = t;
-		autor = a;
-		cantPaginas = cp;
-		generos = g;
+	public Book( String t, String a, String cp, String g){
+		count++;
+		this.id = count;
+		title = t;
+		author = a;
+		pages = cp;
+		genders = g;
 	}
 
 	public int getId() {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getTitle() {
+		return title;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public String getAuthor() {
+		return author;
 	}
 
-	public String getAutor() {
-		return autor;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 
-	public void setAutor(String autor) {
-		this.autor = autor;
+	public String getPages() {
+		return pages;
 	}
 
-	public String getCantPaginas() {
-		return cantPaginas;
+	public void setPages(String pages) {
+		this.pages = pages;
 	}
 
-	public void setCantPaginas(String cantPaginas) {
-		this.cantPaginas = cantPaginas;
+	public String getGenders() {
+		return genders;
 	}
 
-	public String[] getGeneros() {
-		return generos;
+	public void setGenders(String genders) {
+		this.genders = genders;
 	}
-
-	public void setGeneros(String[] generos) {
-		this.generos = generos;
+	
+	public String toString(){
+		return "Libro id:" + id + " title: " + title + " author: " + author +
+				" Pags: " + pages + " genders: " + genders; 
 	}
 }

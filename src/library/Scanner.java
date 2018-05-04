@@ -5,16 +5,17 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Scanner {
-	Library library;
+	
+	String path;
 
-	public Scanner(Library l) {
-		library = l;
+	public Scanner(String path) {
+		this.path = path;
 	}
 
-	public void leerArchivos(String path) {
+	public void importBooks(Library l) {
 
 		String line = "";
 		String cvsSplitBy = ",";
@@ -23,11 +24,11 @@ public class Scanner {
 		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
 			inicio = System.nanoTime();
-
+			br.readLine();
 			while ((line = br.readLine()) != null) {
 
 				String[] items = line.split(cvsSplitBy);
-				library.addBook(items);
+				l.addBook(items);
 
 			}
 			fin = System.nanoTime();
@@ -42,24 +43,30 @@ public class Scanner {
 		}
 	}
 
-	public void resultadoLibrosxGeneros(ArrayList<Book> books, String path) {
+	public void printBooksByGeneder(LinkedList<Book> books, String exportPath) {
 		// CSVWritter
 		BufferedWriter bw = null;
 		try {
-			File file = new File(path);
+			File file = new File(exportPath);
 			if (!file.exists()) {
 				file.createNewFile();
 			}
 
 			FileWriter fw = new FileWriter(file);
 			bw = new BufferedWriter(fw);
-
-			for (int j = 0; j < books.size(); j++) {
-				String tituloLibro = books.get(j).getTitulo();
-				bw.write(tituloLibro);
-				bw.newLine();
+			
+			if(books != null){
+				Iterator<Book> it = books.iterator();
+				while(it.hasNext()){
+					bw.write(it.next().toString());
+					bw.newLine();				
+				}				
 			}
-
+			else{
+				bw.write("No existe el genero ingresado");
+				System.out.println("No existe el genero ingresado");
+			}
+			
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		} finally {

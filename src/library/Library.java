@@ -1,12 +1,18 @@
 package library;
 
+import java.util.LinkedList;
+
+import util.*;
+
+
 public class Library {
-	ListaArreglo books;
-	BinaryTree indicePorGenero;
-	int idBook;
 	
+	ListaArreglo books;
+	GenderTree indicePorGenero;
+
 	public Library(){
-		idBook = 0;
+		books = new ListaArreglo();
+		indicePorGenero = new GenderTree();
 	}
 		
 	public ListaArreglo getBooks() {
@@ -21,32 +27,30 @@ public class Library {
 		return indicePorGenero;
 	}
 
-	public void setIndicePorGenero(BinaryTree indicePorGenero) {
+	public void setIndicePorGenero(GenderTree indicePorGenero) {
 		this.indicePorGenero = indicePorGenero;
 	}
 
-	public int getIdBook() {
-		return idBook;
-	}
 
-	public void setIdBook(int idBook) {
-		this.idBook = idBook;
-	}
-	
 	public void addBook(String [] items){
-		idBook++;
-		String[] generos = items[3].split(" ");
-		Book book = new Book(idBook,items[0], items[1], items[2], generos);
-		addGender(generos);
+		
+		Book book = new Book(items[0], items[1], items[2], items[3]);
+		addLinkToBook(items[3],book);
 		books.insert(book);
 	}
 
-	private void addGender(String[] generos) {
-		for (int i = 0; i < generos.length; i++) {
-			Gender g = new Gender(generos[i]);
-			//antes preguntar si no existe en el arbol
-			indicePorGenero.insert(g);
+	private void addLinkToBook(String generos, Book book) {
+		
+		String[] arrGeneros = generos.split(" ");
+		for (String genero : arrGeneros) {
+			indicePorGenero.addLinkToBook(genero, book);
 		}
 	}
+	
+	public LinkedList<Book> searchBooks(String gender){
+		
+		return indicePorGenero.getBookList(gender);
+	}
+
 
 }
