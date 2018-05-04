@@ -1,23 +1,23 @@
 package library;
 
-public class Node {
+public class Node { 
 	
-	private Object key;
+	private Gender key;
 	private Node left;
 	private Node right;
 		
-	public Node(Object key){
+	public Node(Gender key){
 		
 		this.key = key;
 		
 	}
 
-	public Object getKey() {
+	public Gender getKey() {
 		return key;
 	}
 
 
-	public void setKey(Object key) {
+	public void setKey(Gender key) {
 		this.key = key;
 	}
 
@@ -61,7 +61,4 @@ public class Node {
 		}
 		return right;
 	}
-
-	
-
 }

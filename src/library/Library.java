@@ -1,6 +1,4 @@
 package library;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Library {
 	ListaArreglo books;
@@ -10,35 +8,45 @@ public class Library {
 	public Library(){
 		idBook = 0;
 	}
-	
-	public ListaArreglo getLibros() {
+		
+	public ListaArreglo getBooks() {
 		return books;
 	}
-	
-	public void setLibros(ListaArreglo libros) {
-		this.books = libros;
+
+	public void setBooks(ListaArreglo books) {
+		this.books = books;
 	}
-	
-//	public ArrayList<Indice> getIndicePorGenero() {
-//		return indicePorGenero;
-//	}
-//	
-//	public void setIndicePorGenero(ArrayList<Indice> indicePorGenero) {
-//		this.indicePorGenero = indicePorGenero;
-//	}
-//	
-	private void addLinkToBook(String[] generos, Integer idBook){
-		for (String genero : generos) {
-//			indicePorGenero.get(genero).add(idBook);
-		}
+
+	public BinaryTree getIndicePorGenero() {
+		return indicePorGenero;
+	}
+
+	public void setIndicePorGenero(BinaryTree indicePorGenero) {
+		this.indicePorGenero = indicePorGenero;
+	}
+
+	public int getIdBook() {
+		return idBook;
+	}
+
+	public void setIdBook(int idBook) {
+		this.idBook = idBook;
 	}
 	
 	public void addBook(String [] items){
 		idBook++;
 		String[] generos = items[3].split(" ");
 		Book book = new Book(idBook,items[0], items[1], items[2], generos);
-		addLinkToBook(generos, idBook);
+		addGender(generos);
 		books.insert(book);
+	}
+
+	private void addGender(String[] generos) {
+		for (int i = 0; i < generos.length; i++) {
+			Gender g = new Gender(generos[i]);
+			//antes preguntar si no existe en el arbol
+			indicePorGenero.insert(g);
+		}
 	}
 
 }

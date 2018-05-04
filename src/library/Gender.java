@@ -2,7 +2,7 @@ package library;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Gender implements Iterable<Book> {
+public class Gender implements Iterable<Book>, Comparable<String> {
 
 	String name;
 	LinkedList<Book> books;
@@ -35,6 +35,12 @@ public class Gender implements Iterable<Book> {
 	@Override
 	public Iterator<Book> iterator() {
 		return books.iterator();
+	}
+
+	@Override
+	public int compareTo(String o) {
+		// TODO Auto-generated method stub
+		return this.name.compareTo(o);
 	}
 	
 }
