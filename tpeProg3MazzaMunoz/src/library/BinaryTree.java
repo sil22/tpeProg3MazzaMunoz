@@ -34,7 +34,7 @@ public class BinaryTree {
 	private void addNode(Node newNode, Node node) {
 
 		if (newNode.getKey() != node.getKey()) {
-			if (newNode.getKey().getname().compareTo(node.getKey().getname()) > 1) {
+			if (newNode.getKey().getName().compareTo(node.getKey().getName()) > 1) {
 				if (node.getLeft() != null) {
 					addNode(newNode, node.getLeft());
 				} else {
@@ -61,9 +61,9 @@ public class BinaryTree {
 			if (elem == currentKey) {
 				return true;
 			} else {
-				if (elem.compareTo(currentKey.getname()) < 1) {
+				if (elem.compareTo(currentKey.getName()) < 1) {
 					return hasElem(node.getLeft(), elem);
-				} else if (elem.compareTo(currentKey.getname()) > 1) {
+				} else if (elem.compareTo(currentKey.getName()) > 1) {
 					return hasElem(node.getRight(), elem);
 				}
 			}
@@ -140,7 +140,7 @@ public class BinaryTree {
 		Node left = currentNode.getLeft();
 		Node right = currentNode.getRight();
 
-		if (currentNode.getKey().compareTo(elem.getname()) > 1) {
+		if (currentNode.getKey().compareTo(elem.getName()) > 1) {
 			if (left.getKey() == elem) {
 				currentNode.setLeft(removeNode(left));
 				return true;

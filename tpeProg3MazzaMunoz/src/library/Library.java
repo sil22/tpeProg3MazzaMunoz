@@ -7,28 +7,28 @@ import util.*;
 
 public class Library {
 	
-	ListaArreglo books;
-	GenderTree indicePorGenero;
+	BookList books;
+	GenderTree genderIndex;
 
 	public Library(){
-		books = new ListaArreglo();
-		indicePorGenero = new GenderTree();
+		books = new BookList();
+		genderIndex = new GenderTree();
 	}
 		
-	public ListaArreglo getBooks() {
+	public BookList getBooks() {
 		return books;
 	}
 
-	public void setBooks(ListaArreglo books) {
+	public void setBooks(BookList books) {
 		this.books = books;
 	}
 
-	public BinaryTree getIndicePorGenero() {
-		return indicePorGenero;
+	public GenderTree getGenderIndex() {
+		return genderIndex;
 	}
 
-	public void setIndicePorGenero(GenderTree indicePorGenero) {
-		this.indicePorGenero = indicePorGenero;
+	public void setGenderIndex(GenderTree genderIndex) {
+		this.genderIndex = genderIndex;
 	}
 
 
@@ -39,17 +39,17 @@ public class Library {
 		books.insert(book);
 	}
 
-	private void addLinkToBook(String generos, Book book) {
+	private void addLinkToBook(String gendersStr, Book book) {
 		
-		String[] arrGeneros = generos.split(" ");
-		for (String genero : arrGeneros) {
-			indicePorGenero.addLinkToBook(genero, book);
+		String[] genders = gendersStr.split(" ");
+		for (String gender : genders) {
+			genderIndex.addLinkToBook(gender, book);
 		}
 	}
 	
 	public LinkedList<Book> searchBooks(String gender){
 		
-		return indicePorGenero.getBookList(gender);
+		return genderIndex.getBookList(gender);
 	}
 
 

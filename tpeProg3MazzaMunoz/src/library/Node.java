@@ -7,9 +7,7 @@ public class Node {
 	private Node right;
 		
 	public Node(Gender key){
-		
 		this.key = key;
-		
 	}
 
 	public Gender getKey() {

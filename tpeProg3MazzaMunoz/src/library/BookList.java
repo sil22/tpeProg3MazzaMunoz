@@ -1,15 +1,15 @@
 package library;
 
-public class ListaArreglo {
+public class BookList {
 
-	Object arr[];
+	Book arr[];
 	int size = 0;
 
-	public ListaArreglo(){
-		arr = new Object[500];
+	public BookList(){
+		arr = new Book[500];
 	}
 
-	public ListaArreglo(Object arr[]){
+	public BookList(Book arr[]){
 		this.arr = arr;
 		size = arr.length;
 	}
@@ -26,20 +26,16 @@ public class ListaArreglo {
 	}
 
 
-	public void insert(Object o){
+	public void insert(Book l){
 
 		if(arr[arr.length-1] != null){
-			Object nuevoArreglo[] = new Object[size*2];
+			Book nuevoArreglo[] = new Book[size*2];
 			for (int i = 0; i < size; i++) {
 				nuevoArreglo[i] = arr[i];
 			}
 			arr = nuevoArreglo;
 		}
-		for (int i = 0; i < size+1; i++) {
-			if(arr[i] == null){
-				arr[i] = o;
-			}
-		}
+		arr[l.getId()] = l;
 		size++;
 	}
 
@@ -56,7 +52,7 @@ public class ListaArreglo {
 
 		Integer next = pos+1;
 		if((int) next < (int)size){
-			if((int)arr[pos] <= (int)arr[next]){
+			if((int)arr[pos].getId() <= (int)arr[next].getId()){
 				return isSorted(next);
 			}
 			else{
@@ -64,74 +60,6 @@ public class ListaArreglo {
 			}
 		}
 		return true;
-
-	}
-
-	public void quickSort(){
-
-		quickSort(0, size-1);
-
-	}
-
-	private void quickSort(int start, int end) {
-
-
-		int i = start;
-		int j = end;
-		int pivot = (int)arr[start+(end-start)/2];
-
-		while(i <= j){
-
-			while((int)arr[i] < pivot){
-				i++;
-			}
-			while((int)arr[j] > pivot){
-				j--;
-			}
-			if(i <= j){
-				swap(i,j);
-				i++;
-				j--;
-			}
-		}
-		if(start < j ){
-			quickSort(start,j);
-		}
-		if(i < end){
-			quickSort(i, end);
-		}
-
-	}
-
-	private void swap(int i, int j) {
-		int aux = 0;
-		aux = (int) arr[i];
-		arr[i] = arr[j];
-		arr[j] = aux;
-	}
-
-	public Object getElementRecursively(int pos){
-
-		int count = 0;
-
-		if(pos >= 0 && pos < size){
-			if(count == pos){
-				return arr[count];
-			}
-			count++;
-			return getElementRecursively(pos, count);   
-		}
-		return null;
-
-	}
-
-	private Object getElementRecursively(int pos, int count) {
-
-		if(count == pos){
-			return arr[count]; 
-		}
-		count++;
-		return getElementRecursively(pos, count);
 
 	}
 
@@ -146,6 +74,7 @@ public class ListaArreglo {
 		return null;
 
 	}
+	
 	public Object binarySearch(int inicio, int fin, int medio, Object o){
 
 		Object current = arr[medio];
@@ -177,13 +106,13 @@ public class ListaArreglo {
 	}
 
 	public void deleteAll(){
-		arr = new Object[10];
+		arr = new Book[10];
 		size = 0;
 	}
 
-	public ListaArreglo copy(){
+	public BookList copy(){
 
-		ListaArreglo copy = new ListaArreglo();
+		BookList copy = new BookList();
 		for (int i = 0; i < size; i++) {
 			copy.insert(arr[i]);
 		}

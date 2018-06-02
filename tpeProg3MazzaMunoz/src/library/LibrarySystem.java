@@ -24,7 +24,7 @@ public class LibrarySystem {
 		scanner = s;
 	}
 	
-	public ListaArreglo getBooks(){
+	public BookList getBooks(){
 		return library.getBooks();
 	}
 	
@@ -36,7 +36,7 @@ public class LibrarySystem {
 		
 		LibrarySystem ls = new LibrarySystem("C:/Users/Eloy/Desktop/temporalWSPC/datasets/primerEtapa/dataset1.csv");
 		System.out.println(ls.getBooks().toString());
-		ls.printBooksByGender("asdas", "C:/Users/Eloy/Desktop/temporalWSPC/datasets/primerEtapa/salidaDataset1.csv");
+		ls.printBooksByGender("drama", "C:/Users/Eloy/Desktop/temporalWSPC/datasets/primerEtapa/salidaDataset1.csv");
 	}
 	
 }
